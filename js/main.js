@@ -69,9 +69,16 @@ news.forEach((el) => {
   toLikeBtn.innerHTML = '<i class="fas fa-heart"></i>';
   featureWrapper.append(toLikeBtn);
 
-  toLikeBtn.onclick = (el) => {
-    el.style.color = '#ED3737';
-  };
+  let isLiked = false;
+  toLikeBtn.addEventListener('click', () => {
+    if (!isLiked) {
+      toLikeBtn.style.color = '#ed3737';
+      isLiked = true;
+    } else {
+      toLikeBtn.style.color = '#ffffff';
+      isLiked = false;
+    }
+  });
 
   newHeader.append(bgImage, titleWrapper, featureWrapper);
 

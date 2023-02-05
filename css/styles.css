@@ -25,6 +25,7 @@ body {
 .newHeader {
   position: relative;
 }
+
 .titleWrapper,
 .featureWrapper {
   position: absolute;
@@ -55,6 +56,7 @@ body {
   border: none;
   font-size: 16px;
   width: fit-content;
+  color: #fff;
 }
 
 .bgImage {
