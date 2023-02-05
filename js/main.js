@@ -1,3 +1,5 @@
+'use strict';
+
 const news = [
   {
     title: `Minecraft's new frogs were briefly swallowing goats whole`,
@@ -35,3 +37,21 @@ const news = [
     date: '2022-02-04',
   },
 ];
+
+// const articlesList = document.querySelector('.articlesList');
+
+// news.forEach((el) => {
+//   const article = document.createElement('li');
+//   article.classList.add('article');
+//   articlesList.append(article);
+
+//   const articleHeader = document.createElement('div');
+//   articleHeader.classList.add('articleHeader');
+//   const articleBg = document.createElement('img');
+//   articleBg.classList.add('bg');
+//   articleBg.src = el.headerBgSrc;
+//   articleBg.alt = el.category;
+//   const articleTitle = document.createElement('h1');
+//   articleTitle.textContent = el.title;
+//   articleHeader.append(articleBg, articleTitle);
+// });
