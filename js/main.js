@@ -40,34 +40,31 @@ const news = [
 
 const newsList = document.querySelector('.newsList');
 
-news.forEach((el) => {
-  const article = document.createElement('li');
-  article.classList.add('new');
-  newsList.append(article);
-
-  const newHeader = document.createElement('div');
-  newHeader.classList.add('newHeader');
-
+function createBgImage(src, alt) {
   const bgImage = document.createElement('img');
   bgImage.classList.add('bgImage');
-  bgImage.src = el.headerBgSrc;
-  bgImage.alt = el.category;
+  bgImage.src = src;
+  bgImage.alt = alt;
+  return bgImage;
+}
 
+function createTitle(text) {
   const titleWrapper = document.createElement('div');
   titleWrapper.classList.add('titleWrapper');
-
   const title = document.createElement('h1');
   title.classList.add('title');
-  title.textContent = el.title;
+  title.textContent = text;
   titleWrapper.append(title);
+  return titleWrapper;
+}
 
+function createFeatureBtn() {
   const featureWrapper = document.createElement('div');
   featureWrapper.classList.add('featureWrapper');
 
   const toLikeBtn = document.createElement('button');
   toLikeBtn.classList.add('toLike');
   toLikeBtn.innerHTML = '<i class="fas fa-heart"></i>';
-  featureWrapper.append(toLikeBtn);
 
   let isLiked = false;
   toLikeBtn.addEventListener('click', () => {
@@ -80,30 +77,56 @@ news.forEach((el) => {
     }
   });
 
-  newHeader.append(bgImage, titleWrapper, featureWrapper);
+  featureWrapper.append(toLikeBtn);
+  return featureWrapper;
+}
 
-  const newBody = document.createElement('div');
-  newBody.classList.add('newBody');
+function createHeader(src, alt) {
+  const newHeader = document.createElement('div');
+  newHeader.classList.add('newHeader');
 
+  newHeader.append(createBgImage(src, alt), createTitle(), createFeatureBtn());
+
+  return newHeader;
+}
+
+function createCategory(text) {
   const category = document.createElement('h2');
   category.classList.add('category');
   category.classList.add('grey');
-  category.textContent = el.category.toUpperCase();
+  category.textContent = text.toUpperCase();
+  return category;
+}
 
+function createContent(text) {
   const content = document.createElement('p');
   content.classList.add('content');
-  content.textContent = el.body;
+  content.textContent = text;
+  return content;
+}
 
+function createDate(articleDate) {
   const date = document.createElement('div');
   date.classList.add('date');
   date.classList.add('grey');
-  date.textContent = el.date;
+  date.textContent = articleDate;
+  return date;
+}
 
-  newBody.append(category, content, date);
+function createBody(category, body, date) {
+  const newBody = document.createElement('div');
+  newBody.classList.add('newBody');
 
-  const newFooter = document.createElement('div');
-  newFooter.classList.add('newFooter');
+  newBody.append(
+    createCategory(category),
+    createContent(body),
+    createDate(date)
+  );
 
+  return newBody;
+}
+
+function createDeleteBtn() {
   const toDeleteBtn = document.createElement('button');
   toDeleteBtn.classList.add('toDelete');
   toDeleteBtn.innerHTML = '<i class="far fa-trash-alt trash"></i>';
@@ -111,8 +134,25 @@ news.forEach((el) => {
   toDeleteBtn.onclick = (el) => {
     el.target.closest('.new').remove();
   };
+  return toDeleteBtn;
+}
 
-  newFooter.append(toDeleteBtn);
+function createFooter() {
+  const newFooter = document.createElement('div');
+  newFooter.classList.add('newFooter');
 
-  article.append(newHeader, newBody, newFooter);
+  newFooter.append(createDeleteBtn());
+  return newFooter;
+}
+
+news.forEach((el) => {
+  const article = document.createElement('li');
+  article.classList.add('new');
+  newsList.append(article);
+
+  article.append(
+    createHeader(el.headerBgSrc, el.category),
+    createBody(el.category, el.body, el.date),
+    createFooter()
+  );
 });
