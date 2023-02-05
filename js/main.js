@@ -38,20 +38,74 @@ const news = [
   },
 ];
 
-// const articlesList = document.querySelector('.articlesList');
+const newsList = document.querySelector('.newsList');
 
-// news.forEach((el) => {
-//   const article = document.createElement('li');
-//   article.classList.add('article');
-//   articlesList.append(article);
+news.forEach((el) => {
+  const article = document.createElement('li');
+  article.classList.add('new');
+  newsList.append(article);
 
-//   const articleHeader = document.createElement('div');
-//   articleHeader.classList.add('articleHeader');
-//   const articleBg = document.createElement('img');
-//   articleBg.classList.add('bg');
-//   articleBg.src = el.headerBgSrc;
-//   articleBg.alt = el.category;
-//   const articleTitle = document.createElement('h1');
-//   articleTitle.textContent = el.title;
-//   articleHeader.append(articleBg, articleTitle);
-// });
+  const newHeader = document.createElement('div');
+  newHeader.classList.add('newHeader');
+
+  const bgImage = document.createElement('img');
+  bgImage.classList.add('bgImage');
+  bgImage.src = el.headerBgSrc;
+  bgImage.alt = el.category;
+
+  const titleWrapper = document.createElement('div');
+  titleWrapper.classList.add('titleWrapper');
+
+  const title = document.createElement('h1');
+  title.classList.add('title');
+  title.textContent = el.title;
+  titleWrapper.append(title);
+
+  const featureWrapper = document.createElement('div');
+  featureWrapper.classList.add('featureWrapper');
+
+  const toLikeBtn = document.createElement('button');
+  toLikeBtn.classList.add('toLike');
+  toLikeBtn.innerHTML = '<i class="fas fa-heart"></i>';
+  featureWrapper.append(toLikeBtn);
+
+  toLikeBtn.onclick = (el) => {
+    el.style.color = '#ED3737';
+  };
+
+  newHeader.append(bgImage, titleWrapper, featureWrapper);
+
+  const newBody = document.createElement('div');
+  newBody.classList.add('newBody');
+
+  const category = document.createElement('h2');
+  category.classList.add('category');
+  category.classList.add('grey');
+  category.textContent = el.category.toUpperCase();
+
+  const content = document.createElement('p');
+  content.classList.add('content');
+  content.textContent = el.body;
+
+  const date = document.createElement('div');
+  date.classList.add('date');
+  date.classList.add('grey');
+  date.textContent = el.date;
+
+  newBody.append(category, content, date);
+
+  const newFooter = document.createElement('div');
+  newFooter.classList.add('newFooter');
+
+  const toDeleteBtn = document.createElement('button');
+  toDeleteBtn.classList.add('toDelete');
+  toDeleteBtn.innerHTML = '<i class="far fa-trash-alt trash"></i>';
+
+  toDeleteBtn.onclick = (el) => {
+    el.target.closest('.new').remove();
+  };
+
+  newFooter.append(toDeleteBtn);
+
+  article.append(newHeader, newBody, newFooter);
+});

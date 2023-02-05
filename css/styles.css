@@ -13,12 +13,11 @@ body {
 }
 
 .newsList {
-  display: flex;
-  justify-content: center;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .new {
-  width: 800px;
   margin: 20px;
   box-shadow: 1px 2px 5px black;
 }
@@ -26,22 +25,7 @@ body {
 .newHeader {
   position: relative;
 }
-
-.titleWrapper {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: rgba(182, 182, 182, 0.68);
-}
-
+.titleWrapper,
 .featureWrapper {
   position: absolute;
   left: 0;
@@ -50,8 +34,19 @@ body {
   bottom: 0;
   z-index: 1;
   display: flex;
+}
+
+.titleWrapper {
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(182, 182, 182, 0.68);
+}
+
+.featureWrapper {
   justify-content: right;
   align-items: start;
+
   padding: 20px;
 }
 
@@ -61,10 +56,6 @@ body {
   font-size: 16px;
   width: fit-content;
 }
-
-/* .fa-heart:hover {
-  color: yellow;
-} */
 
 .bgImage {
   width: 100%;
