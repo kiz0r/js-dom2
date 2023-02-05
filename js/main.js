@@ -145,14 +145,21 @@ function createFooter() {
   return newFooter;
 }
 
-news.forEach((el) => {
+function createArticle(src, alt, category, body, date) {
   const article = document.createElement('li');
   article.classList.add('new');
-  newsList.append(article);
 
   article.append(
-    createHeader(el.headerBgSrc, el.category),
-    createBody(el.category, el.body, el.date),
+    createHeader(src, alt),
+    createBody(category, body, date),
     createFooter()
   );
-});
+
+  return article;
+}
+
+const articles = news.map(({ headerBgSrc, category, category, body, date }) =>
+  createArticle(headerBgSrc, category, category, body, date)
+);
+
+newsList.append(...articles);
