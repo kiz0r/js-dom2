@@ -83,12 +83,12 @@ function createFeatureBtn() {
   return featureWrapper;
 }
 
-function createHeader(src, alt, text) {
+function createHeader(src, text) {
   const newHeader = document.createElement('div');
   newHeader.classList.add('newHeader');
 
   newHeader.append(
-    createBgImage(src, alt),
+    createBgImage(src, text),
     createTitle(text),
     createFeatureBtn()
   );
@@ -153,12 +153,12 @@ function createFooter() {
   return newFooter;
 }
 
-function createArticle(src, title, category, body, date) {
+function createArticle(src, category, body, date) {
   const article = document.createElement('li');
   article.classList.add('new');
 
   article.append(
-    createHeader(src, category, title),
+    createHeader(src, category),
     createBody(category, body, date),
     createFooter()
   );
