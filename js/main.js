@@ -166,8 +166,8 @@ function createArticle(src, title, category, body, date) {
   return article;
 }
 
-const articles = news.map(({ headerBgSrc, title, category, body, date }) =>
-  createArticle(headerBgSrc, title, category, category, body, date)
+const articles = news.map(({ headerBgSrc, category, body, date }) =>
+  createArticle(headerBgSrc, category, body, date)
 );
 
 newsList.append(...articles);
