@@ -51,10 +51,12 @@ function createBgImage(src, alt) {
 function createTitle(text) {
   const titleWrapper = document.createElement('div');
   titleWrapper.classList.add('titleWrapper');
+
   const title = document.createElement('h1');
   title.classList.add('title');
   title.textContent = text;
   titleWrapper.append(title);
+
   return titleWrapper;
 }
 
@@ -81,11 +83,15 @@ function createFeatureBtn() {
   return featureWrapper;
 }
 
-function createHeader(src, alt) {
+function createHeader(src, alt, text) {
   const newHeader = document.createElement('div');
   newHeader.classList.add('newHeader');
 
-  newHeader.append(createBgImage(src, alt), createTitle(), createFeatureBtn());
+  newHeader.append(
+    createBgImage(src, alt),
+    createTitle(text),
+    createFeatureBtn()
+  );
 
   return newHeader;
 }
@@ -147,12 +153,12 @@ function createFooter() {
   return newFooter;
 }
 
-function createArticle(src, category, body, date) {
+function createArticle(src, title, category, body, date) {
   const article = document.createElement('li');
   article.classList.add('new');
 
   article.append(
-    createHeader(src, category),
+    createHeader(src, category, title),
     createBody(category, body, date),
     createFooter()
   );
@@ -160,8 +166,8 @@ function createArticle(src, category, body, date) {
   return article;
 }
 
-const articles = news.map(({ headerBgSrc, category, body, date }) =>
-  createArticle(headerBgSrc, category, category, body, date)
+const articles = news.map(({ headerBgSrc, title, category, body, date }) =>
+  createArticle(headerBgSrc, title, category, category, body, date)
 );
 
 newsList.append(...articles);
