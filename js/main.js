@@ -134,6 +134,7 @@ function createDeleteBtn() {
   toDeleteBtn.onclick = (el) => {
     el.target.closest('.new').remove();
   };
+
   return toDeleteBtn;
 }
 
@@ -142,15 +143,16 @@ function createFooter() {
   newFooter.classList.add('newFooter');
 
   newFooter.append(createDeleteBtn());
+
   return newFooter;
 }
 
-function createArticle(src, alt, category, body, date) {
+function createArticle(src, category, body, date) {
   const article = document.createElement('li');
   article.classList.add('new');
 
   article.append(
-    createHeader(src, alt),
+    createHeader(src, category),
     createBody(category, body, date),
     createFooter()
   );
@@ -158,7 +160,7 @@ function createArticle(src, alt, category, body, date) {
   return article;
 }
 
-const articles = news.map(({ headerBgSrc, category, category, body, date }) =>
+const articles = news.map(({ headerBgSrc, category, body, date }) =>
   createArticle(headerBgSrc, category, category, body, date)
 );
 
