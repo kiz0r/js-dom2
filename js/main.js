@@ -38,7 +38,7 @@ const news = [
   },
 ];
 
-const newsList = document.querySelector('.newsList');
+const newsBox = document.querySelector('.newsWrapper');
 
 function createBgImage(src, alt) {
   const bgImage = document.createElement('img');
@@ -52,7 +52,7 @@ function createTitle(text) {
   const titleWrapper = document.createElement('div');
   titleWrapper.classList.add('titleWrapper');
 
-  const title = document.createElement('h1');
+  const title = document.createElement('h2');
   title.classList.add('title');
   title.textContent = text;
   titleWrapper.append(title);
@@ -84,7 +84,7 @@ function createFeatureBtn() {
 }
 
 function createHeader(src, text, title) {
-  const newHeader = document.createElement('div');
+  const newHeader = document.createElement('header');
   newHeader.classList.add('newHeader');
 
   newHeader.append(
@@ -97,7 +97,7 @@ function createHeader(src, text, title) {
 }
 
 function createCategory(text) {
-  const category = document.createElement('h2');
+  const category = document.createElement('p');
   category.classList.add('category');
   category.classList.add('grey');
   category.textContent = text.toUpperCase();
@@ -120,7 +120,7 @@ function createDate(articleDate) {
 }
 
 function createBody(category, body, date) {
-  const newBody = document.createElement('div');
+  const newBody = document.createElement('section');
   newBody.classList.add('newBody');
 
   newBody.append(
@@ -145,7 +145,7 @@ function createDeleteBtn() {
 }
 
 function createFooter() {
-  const newFooter = document.createElement('div');
+  const newFooter = document.createElement('footer');
   newFooter.classList.add('newFooter');
 
   newFooter.append(createDeleteBtn());
@@ -154,7 +154,7 @@ function createFooter() {
 }
 
 function createArticle(src, title, category, body, date) {
-  const article = document.createElement('li');
+  const article = document.createElement('article');
   article.classList.add('new');
 
   article.append(
@@ -170,4 +170,4 @@ const articles = news.map(({ headerBgSrc, title, category, body, date }) =>
   createArticle(headerBgSrc, title, category, body, date)
 );
 
-newsList.append(...articles);
+newsBox.append(...articles);
