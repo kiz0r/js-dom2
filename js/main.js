@@ -40,14 +40,6 @@ const news = [
 
 const newsBox = document.querySelector('.newsWrapper');
 
-function createBgImage(src, alt) {
-  const bgImage = document.createElement('img');
-  bgImage.classList.add('bgImage');
-  bgImage.src = src;
-  bgImage.alt = alt;
-  return bgImage;
-}
-
 function createTitle(text) {
   const titleWrapper = document.createElement('div');
   titleWrapper.classList.add('titleWrapper');
@@ -83,15 +75,11 @@ function createFeatureBtn() {
   return featureWrapper;
 }
 
-function createHeader(src, text, title) {
+function createHeader(src, title) {
   const newHeader = document.createElement('header');
   newHeader.classList.add('newHeader');
-
-  newHeader.append(
-    createBgImage(src, text),
-    createTitle(title),
-    createFeatureBtn()
-  );
+  newHeader.style.backgroundImage = `url(${src})`;
+  newHeader.append(createTitle(title), createFeatureBtn());
 
   return newHeader;
 }
@@ -158,7 +146,7 @@ function createArticle(src, title, category, body, date) {
   article.classList.add('new');
 
   article.append(
-    createHeader(src, category, title),
+    createHeader(src, /*category,*/ title),
     createBody(category, body, date),
     createFooter()
   );
